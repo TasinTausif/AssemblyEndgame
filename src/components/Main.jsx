@@ -1,7 +1,11 @@
-export default function(){
+import GameStatus from './GameStatus'
+import LanguageChips from './LanguageChips'
+export default function () {
+
     return (
-        <>
-            <h1>Hello</h1>
-        </>
+        <main>
+            <GameStatus />
+            <LanguageChips />
+        </main>
     )
 }
