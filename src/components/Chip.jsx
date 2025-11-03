@@ -1,8 +1,9 @@
 export default function(props){
     const styles = {
-        backgroundColor: props.backgroundColor
-    }
+            backgroundColor: props.backgroundColor,
+            color: props.color
+        }
     return (
-        <button style={styles} className="chip">{props.name}</button>
+        <span style={styles} className="chip">{props.name}</span>
     )
 }
