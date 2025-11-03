@@ -14,6 +14,7 @@ export default function () {
             <LanguageChips />
             <Word 
                 currentWord={currentWord}
+                guessedLetters={guessedLetters}
             />
             <Keyboard 
                 guessedLetters={guessedLetters}
