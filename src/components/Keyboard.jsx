@@ -1,13 +1,11 @@
-import KeyboardElement from "./keyboardElement.jsx"
-import {useState} from "react"
+import KeyboardElement from "./KeyboardElement.jsx"
+import {clsx} from "clsx"
 
-const alphabet = "abcdefghijklmnopqrstuvwxyz"
+const alphabets = "abcdefghijklmnopqrstuvwxyz"
 
-export default function(){
-    const [guessedLetters, setGuessedLetters] = useState([]);
-
-    function addGuessedLetters(letter){
-        setGuessedLetters(prevData => (
+export default function(props){
+    function addGuessedLetter(letter){
+        props.setGuessedLetters(prevData => (
             prevData.includes(letter) ? prevData : [...prevData, letter]
         ))
         // setGuessedLetters(prevData => {
@@ -17,13 +15,22 @@ export default function(){
         // })
     }
 
-    const keyboardElements = alphabet.split("").map(letter => (
-        <KeyboardElement 
+    const keyboardElements = alphabets.split("").map(letter => {
+        const isGuessed = props.guessedLetters.includes(letter);
+        const isCorrect = isGuessed && props.currentWord.includes(letter);
+        const isWrong   = isGuessed && !props.currentWord.includes(letter);
+        const className = clsx({
+            correct: isCorrect,
+            wrong: isWrong
+        })
+        
+        return <KeyboardElement 
             key={letter}
             value={letter}
-            addGuessedLetters={() => addGuessedLetters(letter)}
+            addGuessedLetter={() => addGuessedLetter(letter)}
+            className={className}
         />
-    ))
+    })
 
     return (
         <section className="keyboard">

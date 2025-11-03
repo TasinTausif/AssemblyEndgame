@@ -1,9 +1,5 @@
-import {useState} from 'react'
-
-export default function(){
-    const [currentWord, setCurrentWord] = useState("react")
-    
-    const letterElements = currentWord.split("").map((letterElement, index) => (
+export default function(props){
+    const letterElements = props.currentWord.split("").map((letterElement, index) => (
         <span key={index} className="letter-box">
             {letterElement.toUpperCase()}
         </span>
