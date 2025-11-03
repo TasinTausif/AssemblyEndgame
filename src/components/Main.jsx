@@ -1,9 +1,9 @@
-import GameStatus from './GameStatus'
-import LanguageChips from './LanguageChips'
-import Word from './Word'
-import Keyboard from './Keyboard'
-export default function () {
+import GameStatus from './GameStatus.jsx'
+import LanguageChips from './LanguageChips.jsx'
+import Word from './Word.jsx'
+import Keyboard from './Keyboard.jsx'
 
+export default function () {
     return (
         <main>
             <GameStatus />

@@ -1,6 +1,6 @@
 export default function(props){
     return (
-        <button>
+        <button onClick={props.addGuessedLetters}>
             {props.value.toUpperCase()}
         </button>
     )

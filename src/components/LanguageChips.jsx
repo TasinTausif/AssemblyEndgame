@@ -1,8 +1,7 @@
 import { languages } from '../data/languages'
-import LanguageChip from './Chip'
+import LanguageChip from './Chip.jsx'
 
 export default function () {
-
     const languageElements = languages.map(language => (
         <LanguageChip
             key={language.name}
