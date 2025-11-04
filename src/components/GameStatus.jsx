@@ -7,7 +7,7 @@ export default function (props) {
         "game-status",{
             won: props.isGameWon,
             lost: props.isGameLost,
-            farewell: props.isCorrectGuess
+            farewell: !props.isGameLost && props.isLastGuessIncorrect
         }
     )
 
@@ -26,8 +26,8 @@ export default function (props) {
                     <p>You lose! Better start learning Assembly 😭</p>
                 </>
             )
-        }else if(props.isCorrectGuess){
-            return <p>{getFarewellText(languages[props.wrongGuessCount - 1]['name'])}</p>
+        }else if(!props.isGameLost && props.isLastGuessIncorrect){
+            return <p className="farewell-message">{getFarewellText(languages[props.wrongGuessCount - 1].name)}</p>
         }else{
             return null
         }

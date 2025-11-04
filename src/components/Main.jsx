@@ -15,14 +15,15 @@ export default function () {
     const isGameWon         = currentWord.split("").every(letter => guessedLetters.includes(letter))
     const isGameLost        = wrongGuessCount >= languages.length - 1
     const isGameOver        = isGameWon || isGameLost
-    const isCorrectGuess    = guessedLetters.length > 0 ? !currentWord.includes(guessedLetters[guessedLetters.length - 1]) : false;
+    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+    const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
 
     return (
         <main>
             <GameStatus 
                 isGameWon={isGameWon}
                 isGameLost={isGameLost}
-                isCorrectGuess={isCorrectGuess}
+                isLastGuessIncorrect={isLastGuessIncorrect}
                 wrongGuessCount={wrongGuessCount}
             />
             <LanguageChips 
