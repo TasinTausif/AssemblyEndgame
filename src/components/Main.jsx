@@ -11,16 +11,21 @@ export default function () {
     const [guessedLetters, setGuessedLetters]   = useState([]);
 
     // Derived Values
-    const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-    const isGameWon       = currentWord.split("").every(letter => guessedLetters.includes(letter))
-    const isGameLost      = wrongGuessCount >= languages.length - 1
-    const isGameOver      = isGameWon || isGameLost
+    const wrongGuessCount   = guessedLetters.filter(letter => !currentWord.includes(letter)).length
+    const isGameWon         = currentWord.split("").every(letter => guessedLetters.includes(letter))
+    const isGameLost        = wrongGuessCount >= languages.length - 1
+    const isGameOver        = isGameWon || isGameLost
+    const lastGuess         = guessedLetters[guessedLetters.length - 1];
+    const isCorrectGuess    = lastGuess && currentWord.includes(lastGuess);
 
+    // console.log(lastGuess, isCorrectGuess)
     return (
         <main>
             <GameStatus 
                 isGameWon={isGameWon}
                 isGameLost={isGameLost}
+                isCorrectGuess={isCorrectGuess}
+                wrongGuessCount={wrongGuessCount}
             />
             <LanguageChips 
                 languages={languages}

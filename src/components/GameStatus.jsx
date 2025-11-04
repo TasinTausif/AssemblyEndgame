@@ -1,4 +1,6 @@
 import {clsx} from "clsx"
+import {getFarewellText} from "../data/utils"
+import { languages } from "../data/languages.js"
 
 export default function (props) {
     const className = clsx(
@@ -23,6 +25,8 @@ export default function (props) {
                     <p>You lose! Better start learning Assembly 😭</p>
                 </>
             )
+        }else if(props.isCorrectGuess){
+            return <p>{getFarewellText(languages[props.wrongGuessCount - 1]['name'])}</p>
         }else{
             return null
         }
