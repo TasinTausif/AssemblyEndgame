@@ -1,12 +1,13 @@
 import {clsx} from "clsx"
 import {getFarewellText} from "../data/utils"
-import { languages } from "../data/languages.js"
+import {languages} from "../data/languages.js"
 
 export default function (props) {
     const className = clsx(
         "game-status",{
             won: props.isGameWon,
-            lost: props.isGameLost
+            lost: props.isGameLost,
+            farewell: props.isCorrectGuess
         }
     )
 

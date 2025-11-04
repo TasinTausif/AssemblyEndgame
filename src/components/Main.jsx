@@ -15,10 +15,8 @@ export default function () {
     const isGameWon         = currentWord.split("").every(letter => guessedLetters.includes(letter))
     const isGameLost        = wrongGuessCount >= languages.length - 1
     const isGameOver        = isGameWon || isGameLost
-    const lastGuess         = guessedLetters[guessedLetters.length - 1];
-    const isCorrectGuess    = lastGuess && currentWord.includes(lastGuess);
+    const isCorrectGuess    = guessedLetters.length > 0 ? !currentWord.includes(guessedLetters[guessedLetters.length - 1]) : false;
 
-    // console.log(lastGuess, isCorrectGuess)
     return (
         <main>
             <GameStatus 
