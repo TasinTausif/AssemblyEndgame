@@ -5,10 +5,14 @@ import Keyboard from './Keyboard.jsx'
 import ScreenReaderInstructions from './ScreenReaderInstructions.jsx'
 import NewGameButton from './NewGameButton.jsx'
 import { useState } from 'react'
-import { languages } from '../data/languages'
+import Confetti from 'react-confetti'
+import {useWindowSize} from 'react-use'
+import {languages} from '../data/languages'
 import {getRandomWord} from '../data/utils.js'
 
 export default function () {
+    const { width, height } = useWindowSize()
+
     // State Values
     const [currentWord, setCurrentWord]         = useState(() => getRandomWord());
     const [guessedLetters, setGuessedLetters]   = useState([]);
@@ -24,6 +28,10 @@ export default function () {
 
     return (
         <main>
+            {isGameWon && <Confetti
+                width={width}
+                height={height}
+            />}
             <GameStatus 
                 isGameWon={isGameWon}
                 isGameLost={isGameLost}
@@ -37,6 +45,7 @@ export default function () {
             <Word 
                 currentWord={currentWord}
                 guessedLetters={guessedLetters}
+                isGameLost={isGameLost}
             />
             <ScreenReaderInstructions
                 currentWord={currentWord} 

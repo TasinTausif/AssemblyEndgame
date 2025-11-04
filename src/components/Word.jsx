@@ -1,10 +1,15 @@
+import {clsx} from 'clsx'
+
 export default function (props) {
     const letterElements = props.currentWord.split("").map((letter, index) => {
-        const viewItem = props.guessedLetters.includes(letter) ? letter.toUpperCase() : " ";
+        const shouldRevealLetter = props.isGameLost || props.guessedLetters.includes(letter);
+        const letterClassName = clsx(
+            props.isGameLost && !props.guessedLetters.includes(letter) && "missed-letter"
+        )
 
-        return <span key={index} className="letter-box">
-            {viewItem}
-        </span>
+        return <span key={index} className={letterClassName}>
+                {shouldRevealLetter ? letter.toUpperCase() : ""}
+            </span>
     })
 
     return (
