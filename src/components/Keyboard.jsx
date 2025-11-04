@@ -29,6 +29,8 @@ export default function(props){
             value={letter}
             addGuessedLetter={() => addGuessedLetter(letter)}
             className={className}
+            isGameOver={props.isGameOver}
+            isGuessed={isGuessed}
         />
     })
 

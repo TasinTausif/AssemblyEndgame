@@ -2,6 +2,7 @@ import GameStatus from './GameStatus.jsx'
 import LanguageChips from './LanguageChips.jsx'
 import Word from './Word.jsx'
 import Keyboard from './Keyboard.jsx'
+import ScreenReaderInstructions from './ScreenReaderInstructions.jsx'
 import { useState } from 'react'
 import { languages } from '../data/languages'
 
@@ -11,9 +12,10 @@ export default function () {
     const [guessedLetters, setGuessedLetters]   = useState([]);
 
     // Derived Values
+    const numGuessesLeft    = languages.length - 1
     const wrongGuessCount   = guessedLetters.filter(letter => !currentWord.includes(letter)).length
     const isGameWon         = currentWord.split("").every(letter => guessedLetters.includes(letter))
-    const isGameLost        = wrongGuessCount >= languages.length - 1
+    const isGameLost        = wrongGuessCount >= numGuessesLeft
     const isGameOver        = isGameWon || isGameLost
     const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
     const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
@@ -34,10 +36,17 @@ export default function () {
                 currentWord={currentWord}
                 guessedLetters={guessedLetters}
             />
+            <ScreenReaderInstructions
+                currentWord={currentWord} 
+                guessedLetters={guessedLetters}
+                lastGuessedLetter={lastGuessedLetter}
+                numGuessesLeft={numGuessesLeft}
+            />
             <Keyboard 
                 guessedLetters={guessedLetters}
                 setGuessedLetters={setGuessedLetters}
                 currentWord={currentWord}
+                isGameOver={isGameOver}
             />
             {isGameOver && <button className='new-game'>New Game</button>}
         </main>
