@@ -3,20 +3,29 @@ import LanguageChips from './LanguageChips.jsx'
 import Word from './Word.jsx'
 import Keyboard from './Keyboard.jsx'
 import { useState } from 'react'
+import { languages } from '../data/languages'
 
 export default function () {
-    // State Value
-    const [currentWord, setCurrentWord] = useState("react")
-    const [guessedLetters, setGuessedLetters] = useState([]);
+    // State Values
+    const [currentWord, setCurrentWord]         = useState("react")
+    const [guessedLetters, setGuessedLetters]   = useState([]);
 
-    // Derived Value
+    // Derived Values
     const wrongGuessCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-    console.log(wrongGuessCount)
+    const isGameWon       = currentWord.split("").every(letter => guessedLetters.includes(letter))
+    const isGameLost      = wrongGuessCount >= languages.length - 1
+    const isGameOver      = isGameWon || isGameLost
 
     return (
         <main>
-            <GameStatus />
-            <LanguageChips />
+            <GameStatus 
+                isGameWon={isGameWon}
+                isGameLost={isGameLost}
+            />
+            <LanguageChips 
+                languages={languages}
+                wrongGuessCount={wrongGuessCount}
+            />
             <Word 
                 currentWord={currentWord}
                 guessedLetters={guessedLetters}
@@ -26,7 +35,7 @@ export default function () {
                 setGuessedLetters={setGuessedLetters}
                 currentWord={currentWord}
             />
-            <button className='new-game'>New Game</button>
+            {isGameOver && <button className='new-game'>New Game</button>}
         </main>
     )
 }
