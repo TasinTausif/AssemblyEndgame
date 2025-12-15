@@ -15,6 +15,25 @@
 
 ---
 
+## 📸 Screenshots
+
+### New Game
+<img src="./screenshots/newGame.png" alt="New Game" />
+
+### Correct Guess
+<img src="./screenshots/correctGuess.png" alt="Correct Guess" />
+
+### Wrong Guess
+<img src="./screenshots/wrongGuess.png" alt="Wrong Guess" />
+
+### Game Won
+<img src="./screenshots/gameWon.png" alt="Game Won" />
+
+### Game Lost
+<img src="./screenshots/gameLost.png" alt="Game Lost" />
+
+---
+
 ## 🛠️ Tech Stack
 
 | Layer        | Technologies                        |
