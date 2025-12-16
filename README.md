@@ -4,6 +4,13 @@
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Play the game here:**  
+👉 https://assembly-endgame-ruby.vercel.app/
+
+---
+
 ## 🚀 Features
 
 - 🎯 Word-guessing gameplay: Guess one letter at a time to reveal the hidden word.  
@@ -42,6 +49,7 @@
 | Styling      | CSS / your chosen styling solution  |
 | Build Tool   | Vite                                |
 | Logic        | JavaScript – state & conditional UI |
+| Hosting   | Vercel |
 
 ---
 
